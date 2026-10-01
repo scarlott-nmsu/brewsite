@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Las Cruces Breweries</h1>
+<p class="lede">Live data from the Open Brewery DB API.</p>
+
+{% if breweries %}
+<table class="breweries">
+  <thead>
+    <tr><th>Name</th><th>Type</th><th>Address</th><th>Phone</th><th>Website</th></tr>
+  </thead>
+  <tbody>
+    {% for b in breweries %}
+    <tr>
+      <td>{{ b.name }}</td>
+      <td>{{ b.brewery_type | capitalize }}</td>
+      <td>{{ b.street or "Not listed" }}, {{ b.city }}, {{ b.state }} {{ b.postal_code }}</td>
+      <td>{{ b.phone or "Not listed" }}</td>
+      <td>{% if b.website_url %}<a href="{{ b.website_url }}" target="_blank" rel="noopener">Visit</a>{% else %}Not listed{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<p class="count">{{ breweries | length }} breweries found.</p>
+{% else %}
+<p>Brewery data could not be loaded right now. Try refreshing the page.</p>
+{% endif %}
+{% endblock %}
