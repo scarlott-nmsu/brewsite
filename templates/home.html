@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <h1>Craft beer in the Mesilla Valley</h1>
+  <p class="lede">BrewSite tracks the breweries in and around Las Cruces, New Mexico, pulled live from the Open Brewery DB.</p>
+  <a class="button" href="{{ url_for('brewery') }}">See the breweries</a>
+</section>
+
+<section class="about">
+  <figure>
+    <img src="{{ url_for('static', filename='images/home.jpg') }}" alt="Photo added by Zack Scarlott">
+    <figcaption>Photo added by Zack Scarlott.</figcaption>
+  </figure>
+  <div>
+    <h2>About this site</h2>
+    <p>Las Cruces sits between the Organ Mountains and the Rio Grande, and its brewery scene has grown alongside NMSU. Green chile beers show up on tap every fall during harvest season.</p>
+    <p>This site was built as a Flask project. Pages are Jinja templates that extend one base layout, and the brewery list comes from a live API call each time the page loads.</p>
+    <p>The code moves through three Git branches: development for new work, staging for testing, and production for the finished site.</p>
+  </div>
+</section>
+{% endblock %}
